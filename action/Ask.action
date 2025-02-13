@@ -1,0 +1,34 @@
+# Retrieve some pieces of information through a dialogue with the user.
+
+std_skills/Meta meta
+
+# The user to interact with.
+# If empty, any user can be interacted with.
+string user_id
+
+# The group of users to interact with.
+# If empty, any group of users can be interacted with.
+# If not empty, the 'user_id' field should be ignored.
+string group_id
+
+# The list of pieces of information to be retrieved through the dialogue.
+string[] queries
+
+---
+std_skills/Result result
+
+# The JSON dictionary of values obtained from the dialogue,
+# where the keys correspond to the 'queries' fields.
+# If the piece of information relative to a key could not be retrieved,
+# its associated value is null.
+string answers
+
+---
+std_skills/Feedback feedback
+
+# The ID of the user or system which added something to the dialogue.
+# See chatbot_msgs/AddToDialogue for more information.
+string user_id
+
+# The text of the latest utterance in the dialogue.
+string text
