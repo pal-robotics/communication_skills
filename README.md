@@ -1,1 +1,1 @@
-# communication_msgs
+# communication_skills

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <?xml-model href="http://download.ros.org/schema/package_format3.xsd" schematypens="http://www.w3.org/2001/XMLSchema"?>
 <package format="3">
-  <name>communication_msgs</name>
+  <name>communication_skills</name>
   <version>0.1.0</version>
-  <description>Interfaces for PAL Communication packages</description>
+  <description>Interfaces for PAL Communication skills</description>
   <maintainer email="luka.juricic@pal-robotics.com">user</maintainer>
   <license>Apache License 2.0</license>
   <author email="luka.juricic@pal-robotics.com">Luka Juricic</author>
