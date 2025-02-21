@@ -2,13 +2,13 @@
 
 std_skills/Meta meta
 
-# The user to interact with.
-# If empty, no specific user will be targeted for the interaction.
-string user_id
+# The ID of the person to interact with.
+# If empty, any user can be interacted with.
+string person_id
 
-# The group of users to interact with.
-# If empty, no specific group of users will be targeted for the interaction.
-# If not empty, the 'user_id' field should be ignored.
+# The ID of the group of persons to interact with.
+# If empty, any group of persons can be interacted with.
+# If not empty, the 'person_id' field should be ignored.
 string group_id
 
 # The text to be uttered.
@@ -22,7 +22,3 @@ std_skills/Result result
 
 ---
 std_skills/Feedback feedback
-
-# Current communication action being performed.
-# E.g., while uttering, i.e., using the TTS action, the value should be 'tts'.
-string current_action

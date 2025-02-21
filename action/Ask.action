@@ -2,13 +2,13 @@
 
 std_skills/Meta meta
 
-# The user to interact with.
+# The ID of the person to interact with.
 # If empty, any user can be interacted with.
-string user_id
+string person_id
 
-# The group of users to interact with.
-# If empty, any group of users can be interacted with.
-# If not empty, the 'user_id' field should be ignored.
+# The ID of the group of persons to interact with.
+# If empty, any group of persons can be interacted with.
+# If not empty, the 'person_id' field should be ignored.
 string group_id
 
 # The list of pieces of information to be retrieved through the dialogue.
@@ -25,10 +25,3 @@ string answers
 
 ---
 std_skills/Feedback feedback
-
-# The ID of the user or system which added something to the dialogue.
-# See chatbot_msgs/AddToDialogue for more information.
-string user_id
-
-# The text of the latest utterance in the dialogue.
-string text
