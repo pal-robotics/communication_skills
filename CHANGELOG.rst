@@ -2,6 +2,11 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* remove ask and say feedback; use person_id field instead of user_id
+* Contributors: Luka Juricic
+
 0.2.0 (2025-02-13)
 ------------------
 * [doc] minor
