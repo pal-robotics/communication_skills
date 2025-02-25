@@ -2,8 +2,8 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+0.3.0 (2025-02-25)
+------------------
 * remove ask and say feedback; use person_id field instead of user_id
 * Contributors: Luka Juricic
 
