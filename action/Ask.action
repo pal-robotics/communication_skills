@@ -11,8 +11,9 @@ string person_id
 # If not empty, the 'person_id' field should be ignored.
 string group_id
 
-# The list of pieces of information to be retrieved through the dialogue.
-string[] queries
+# The JSON dictionary of pieces of information to be retrieved through the dialogue.
+# The keys correspond to the info required, while the values to the data type of the info.
+string queries
 
 ---
 std_skills/Result result
