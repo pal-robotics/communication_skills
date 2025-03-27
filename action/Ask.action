@@ -1,4 +1,10 @@
-# Retrieve some pieces of information through a dialogue with the user.
+# Retrieve some pieces of information through a chat with a person or a group of people.
+# It is a specialization of the Chat action, where:
+# - "ask" -> purpose.keyword
+# - queries -> purpose.variables
+# - true -> initiate
+# ---
+# - results -> answers
 
 std_skills/Meta meta
 
@@ -13,7 +19,10 @@ string group_id
 
 # The JSON dictionary of pieces of information to be retrieved through the dialogue.
 # The keys correspond to the info required, while the values to the data type of the info.
-string queries
+# For example, if the required information is the person name and age,
+# the dictionary could be the following:
+#   {"person_name": "str", "person_age": "int"}
+string queries "{}"
 
 ---
 std_skills/Result result
@@ -21,8 +30,11 @@ std_skills/Result result
 # The JSON dictionary of values obtained from the dialogue,
 # where the keys correspond to the 'queries' fields.
 # If the piece of information relative to a key could not be retrieved,
-# its associated value is null.
-string answers
+# its associated key is not added to the results.
+# For example, if queries is '{"person_name": "str", "person_age": "int"}' and the age could not be retrieved,
+# the dictionary could be the following:
+#   {"person_name": "Bob"}
+string answers "{}"
 
 ---
 std_skills/Feedback feedback

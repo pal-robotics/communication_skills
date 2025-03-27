@@ -13,6 +13,7 @@
 
   <depend>action_msgs</depend>
   <depend>builtin_interfaces</depend>
+  <depend>chatbot_msgs</depend>
   <depend>std_skills</depend>
 
   <exec_depend>rosidl_default_runtime</exec_depend>
