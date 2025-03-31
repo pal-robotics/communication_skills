@@ -24,7 +24,7 @@ std_skills/Result result
 # For example, if the purpose.keyword is 'ask', and the purpose.variables is '{"person_name": "str"}',
 # the dictionary could be the following:
 #   {"person_name": "Bob"}
-string results "{}"
+string purpose_results "{}"
 
 ---
 std_skills/Feedback feedback
