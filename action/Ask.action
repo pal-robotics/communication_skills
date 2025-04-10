@@ -1,7 +1,7 @@
 # Retrieve some pieces of information through a chat with a person or a group of people.
 # It is a specialization of the Chat action, where:
 # - "ask" -> purpose.keyword
-# - queries -> purpose.variables
+# - answers_schema -> purpose.variables
 # - true -> initiate
 # ---
 # - results -> answers
@@ -17,21 +17,29 @@ string person_id
 # If not empty, the 'person_id' field should be ignored.
 string group_id
 
-# The JSON dictionary of pieces of information to be retrieved through the dialogue.
+# The JSON dictionary of pieces of information to be retrieved through the chat.
 # The keys correspond to the info required, while the values to the data type of the info.
 # For example, if the required information is the person name and age,
 # the dictionary could be the following:
 #   {"person_name": "str", "person_age": "int"}
-string queries "{}"
+string answers_schema "{}"
+
+# Specifies the text the robot should utter when initiating the chat.
+# It is equivalent to using the 'Say' action after starting the chat.
+# It is only used if the 'initiate' field is true.
+# If empty and the 'initiate' field is true, the robot will use an autonomously generated text to initiate the chat.
+# It is only used if the 'initiate' field is true.
+# If empty and the 'initiate' field is true, the robot will use an autonomously generated text to initiate the chat.
+string initial_input
 
 ---
 std_skills/Result result
 
-# The JSON dictionary of values obtained from the dialogue,
-# where the keys correspond to the 'queries' fields.
+# The JSON dictionary of values obtained from the chat,
+# where the keys correspond to the 'answers_schema' fields.
 # If the piece of information relative to a key could not be retrieved,
 # its associated key is not added to the results.
-# For example, if queries is '{"person_name": "str", "person_age": "int"}' and the age could not be retrieved,
+# For example, if the schema is '{"person_name": "str", "person_age": "int"}' and the age could not be retrieved,
 # the dictionary could be the following:
 #   {"person_name": "Bob"}
 string answers "{}"
