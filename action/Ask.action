@@ -29,7 +29,6 @@ string group_id
 # For example, if the required information is the person age,
 # the dictionary could be the following:
 #   {"age": {"type": "integer", "minimum": 0}}
-
 string answers_schema "{}"
 
 # Specifies the question the robot should utter when initiating the chat.
