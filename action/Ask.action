@@ -1,10 +1,15 @@
 # Retrieve some pieces of information through a chat with a person or a group of people.
 # It is a specialization of the Chat action, where:
-# - "ask" -> purpose.keyword
-# - answers_schema -> purpose.variables
-# - true -> initiate
+# - role.name = ASK_ROLE
+# - role.configuration =
+#   {
+#     "question":  question
+#     "result_schema_properties": answers_schema
+#   }
+# - initiate: true
+# - initial_input: question
 # ---
-# - results -> answers
+# - role_results: answers
 
 std_skills/Meta meta
 
@@ -24,13 +29,10 @@ string group_id
 #   {"person_name": "str", "person_age": "int"}
 string answers_schema "{}"
 
-# Specifies the text the robot should utter when initiating the chat.
+# Specifies the question the robot should utter when initiating the chat.
 # It is equivalent to using the 'Say' action after starting the chat.
-# It is only used if the 'initiate' field is true.
-# If empty and the 'initiate' field is true, the robot will use an autonomously generated text to initiate the chat.
-# It is only used if the 'initiate' field is true.
-# If empty and the 'initiate' field is true, the robot will use an autonomously generated text to initiate the chat.
-string initial_input
+# If empty and the 'initiate' field is true, the robot will use an autonomously generated question to initiate the chat.
+string question
 
 ---
 std_skills/Result result

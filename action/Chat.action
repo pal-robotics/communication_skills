@@ -11,8 +11,8 @@ string person_id
 # If not empty, the 'person_id' field should be ignored.
 string group_id
 
-# The purpose of the chat.
-chatbot_msgs/DialoguePurpose purpose
+# The role of the chat.
+chatbot_msgs/DialogueRole role
 
 # Whether the chat should be initiated by the robot, otherwise it should wait for a user input.
 bool initiate
@@ -21,16 +21,27 @@ bool initiate
 # It is equivalent to using the 'Say' action after starting the chat.
 # It is only used if the 'initiate' field is true.
 # If empty and the 'initiate' field is true, the robot will use an autonomously generated text to initiate the chat.
+# If empty and the 'initiate' field is true,
+# the robot will use an autonomously generated text to initiate the chat,
+# based on the provided `role`.
 string initial_input
 
 ---
 std_skills/Result result
 
-# The JSON dictionary of results obtained from the chat, based on the purpose.
-# For example, if the purpose.keyword is 'ask', and the purpose.variables is '{"person_name": "str"}',
+# The JSON dictionary of results obtained from the dialogue, based on the role.
+# For example, if the role.name is ASK_ROLE, and the role.configuration is
+# {
+#   ...
+#   "result_schema_properties": {  # -> 
+#     "age": {
+#       "type": "integer",
+#       "minimum": 0,
+#   },
+# }
 # the dictionary could be the following:
-#   {"person_name": "Bob"}
-string purpose_results "{}"
+#   {"age": "12"}
+string role_results "{}"
 
 ---
 std_skills/Feedback feedback
