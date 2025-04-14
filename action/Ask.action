@@ -23,10 +23,13 @@ string person_id
 string group_id
 
 # The JSON dictionary of pieces of information to be retrieved through the chat.
-# The keys correspond to the info required, while the values to the data type of the info.
-# For example, if the required information is the person name and age,
+# The keys correspond to the info required,
+# while the values follow the JSON schema format for object properties
+# (see https://json-schema.org/understanding-json-schema/reference/object.html#properties).
+# For example, if the required information is the person age,
 # the dictionary could be the following:
-#   {"person_name": "str", "person_age": "int"}
+#   {"age": {"type": "integer", "minimum": 0}}
+
 string answers_schema "{}"
 
 # Specifies the question the robot should utter when initiating the chat.
@@ -41,9 +44,9 @@ std_skills/Result result
 # where the keys correspond to the 'answers_schema' fields.
 # If the piece of information relative to a key could not be retrieved,
 # its associated key is not added to the results.
-# For example, if the schema is '{"person_name": "str", "person_age": "int"}' and the age could not be retrieved,
-# the dictionary could be the following:
-#   {"person_name": "Bob"}
+# For example, if the schema is '{"name": {"type": "string"}, "age": {"type": "integer"}}'
+# and the age could not be retrieved, the dictionary could be the following:
+#   {"name": "Bob"}
 string answers "{}"
 
 ---
