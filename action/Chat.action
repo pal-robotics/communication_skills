@@ -20,7 +20,6 @@ bool initiate
 # Specifies the text the robot should utter when initiating the chat.
 # It is equivalent to using the 'Say' action after starting the chat.
 # It is only used if the 'initiate' field is true.
-# If empty and the 'initiate' field is true, the robot will use an autonomously generated text to initiate the chat.
 # If empty and the 'initiate' field is true,
 # the robot will use an autonomously generated text to initiate the chat,
 # based on the provided `role`.
