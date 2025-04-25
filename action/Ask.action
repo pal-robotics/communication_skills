@@ -33,7 +33,7 @@ string answers_schema "{}"
 
 # Specifies the question the robot should utter when initiating the chat.
 # It is equivalent to using the 'Say' action after starting the chat.
-# If empty and the 'initiate' field is true, the robot will use an autonomously generated question to initiate the chat.
+# If empty, the robot will use an autonomously generated question to initiate the chat.
 string question
 
 ---
