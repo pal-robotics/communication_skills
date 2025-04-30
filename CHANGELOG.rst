@@ -2,6 +2,19 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* fix documentation
+* fix Ask doc
+* fix Chat doc
+* align Ask documentation with the chatbot_msgs/Dialogue one
+* update Chat and Action to new Dialogue role
+* Chat and Ask can specify the initial robot utterance
+* clearer field naming in Chat result msg
+* add Chat; fix documentation
+* change Ask queries to be a dictionary
+* Contributors: Luka Juricic
+
 0.3.0 (2025-02-25)
 ------------------
 * remove ask and say feedback; use person_id field instead of user_id
