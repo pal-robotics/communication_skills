@@ -2,8 +2,8 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.0.0 (2025-04-30)
+------------------
 * fix documentation
 * fix Ask doc
 * fix Chat doc
