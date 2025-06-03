@@ -31,7 +31,7 @@
         "id": "ask",
         "description": "Get information through a dialogue",
         "interface": "action",
-        "default_interface_path": "/ask",
+        "default_interface_path": "/skill/ask",
         "datatype": "communication_skills/action/Ask",
         "parameters": [
           {
@@ -64,7 +64,7 @@
         "id": "chat",
         "description": "Start chatting with a person or a group of people",
         "interface": "action",
-        "default_interface_path": "/chat",
+        "default_interface_path": "/skill/chat",
         "datatype": "communication_skills/action/Chat",
         "parameters": [
           {
@@ -102,7 +102,7 @@
         "id": "say",
         "description": "Say something with multiple social modality, mainly speech utterance, but also gaze, gestures, etc.",
         "interface": "action",
-        "default_interface_path": "/say",
+        "default_interface_path": "/skill/say",
         "datatype": "communication_skills/action/Say",
         "parameters": [
           {
