@@ -2,6 +2,12 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* add the /skill namespace to the default_interface_path
+* move here the actual skills definitions
+* Contributors: Séverin Lemaignan, ferrangebelli
+
 1.0.0 (2025-04-30)
 ------------------
 * fix documentation
