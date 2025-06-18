@@ -2,6 +2,12 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* {skillint -> archlint}
+* enable tests, including checking manifest validity
+* Contributors: Séverin Lemaignan
+
 1.1.0 (2025-06-12)
 ------------------
 * add the /skill namespace to the default_interface_path
