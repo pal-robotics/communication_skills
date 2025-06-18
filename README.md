@@ -1,6 +1,10 @@
 # communication_skills
 
-This repo includes ROS 2 message definitions for the following communication skills:
+This repo includes ROS 2 skill manifests and message definitions for the
+following communication skills:
 
-- Ask.action
-- Say.action
+- `ask`
+- `say`
+- `chat`
+
+See [package.xml](./package.xml) for the detailed manifests.
