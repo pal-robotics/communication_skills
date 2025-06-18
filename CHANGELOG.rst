@@ -2,8 +2,8 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.2.0 (2025-06-18)
+------------------
 * {skillint -> archlint}
 * enable tests, including checking manifest validity
 * Contributors: Séverin Lemaignan
