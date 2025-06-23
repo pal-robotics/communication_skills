@@ -28,103 +28,123 @@
   <export>
     <build_type>ament_cmake</build_type>
 
-    <skill content-type="json">
-      {
-        "id": "ask",
-        "description": "Get information through a dialogue",
-        "interface": "action",
-        "default_interface_path": "/skill/ask",
-        "datatype": "communication_skills/action/Ask",
-        "parameters": [
-          {
-            "name": "person_id",
-            "type": "string",
-            "description": "The ID of the person to interact with. If empty, any user can be interacted with."
-          },
-          {
-            "name": "group_id",
-            "type": "string",
-            "description": "The ID of the group of persons to interact with. If empty, any group of persons can be interacted with. If not empty, the 'person_id' field should be ignored."
-          },
-          {
-            "name": "answers_schema",
-            "type": "string",
-            "description": "The JSON dictionary of pieces of information to be retrieved through the chat."
-          },
-          {
-            "name": "question",
-            "type": "string",
-            "description": "Specifies the question the robot should utter when initiating the chat. If empty, the robot will use an autonomously generated question to initiate the chat"
-          }
-        ],
-        "functional_domains": ["communication"]
-      }
+    <skill content-type="yaml">
+        id: ask
+        description: 'A specialization of the :action:`chat` where the role 
+          is predefined and the dialogue is always initiated by the robot.
+           
+           See :ref:`dialogue_management` for details.'
+        interface: action
+        default_interface_path: /skill/ask
+        datatype: communication_skills/action/Ask
+        functional_domains:
+          - communication
+        parameters:
+          in:
+            - name: meta.priority
+              type: integer
+              description: Higher value means higher priority.
+            - name: person_id
+              type: string
+              description: If targeting a specific person, the ID of the person.
+            - name: group_id
+              type: string
+              description: If targeting a group of people, the ID of the group (currently not supported).
+            - name: answers_schema
+              type: object
+              description: 'The serialized JSON object of pieces of information 
+                to be retrieved through the chat. The keys correspond to the info 
+                required, while the values follow the `JSON schema format for object 
+                properties &lt;https://json-schema.org/understanding-json-schema/reference/object.html#properties&gt;`_.
+
+                For example, if the required information is the person age, the 
+                dictionary could be the following:
+                
+                .. code:: json
+                
+                   {"age": {"type": "integer", "minimum": 0}}'
+            - name: question
+              type: string
+              description: 'The question to be asked to the user. It is used to 
+                generate the initial utterance of the dialogue.'
+        
+          out:
+            - name: answers
+              type: object
+              description: 'The serialized JSON object containing the pieces 
+                retrieved from the chat, depending on the answers_schema.
+                
+                For the one in the example above, the result might be:
+                
+                .. code:: json
+                
+                   {"age": 42}'
     </skill>
 
-    <skill content-type="json">
-      {
-        "id": "chat",
-        "description": "Start chatting with a person or a group of people",
-        "interface": "action",
-        "default_interface_path": "/skill/chat",
-        "datatype": "communication_skills/action/Chat",
-        "parameters": [
-          {
-            "name": "person_id",
-            "type": "string",
-            "description": "The ID of the person to interact with. If empty, any user can be interacted with."
-          },
-          {
-            "name": "group_id",
-            "type": "string",
-            "description": "The ID of the group of persons to interact with. If empty, any group of persons can be interacted with. If not empty, the 'person_id' field should be ignored."
-          },
-          {
-            "name": "role",
-            "type": "chatbot_msgs/msg/DialogueRole",
-            "description": "TThe role of the chat."
-          },
-          {
-            "name": "initiate",
-            "type": "bool",
-            "description": "Whether the chat should be initiated by the robot, otherwise it should wait for a user input."
-          },
-          {
-            "name": "initial_input",
-            "type": "bool",
-            "description": "Specifies the text the robot should utter when initiating the chat. It is only used if the 'initiate' field is true."
-          }
-        ],
-        "functional_domains": ["communication"]
-      }
+    <skill content-type="yaml">
+        id: chat
+        description: 'Start a dialogue with a defined purpose.
+           
+           See :ref:`dialogue_management` for details.'
+        interface: action
+        default_interface_path: /skill/chat
+        datatype: communication_skills/action/Chat
+        functional_domains:
+          - communication
+        parameters:
+          in:
+            - name: role
+              type: string
+              description: The name and configuration for the dialogue purpose (chatbot-dependent).
+              required: true
+              default: __default__
+            - name: meta.priority
+              type: integer
+              description: Higher value means higher priority.
+            - name: person_id
+              type: string
+              description: If targeting a specific person, the ID of the person.
+            - name: group_id
+              type: string
+              description: If targeting a group of people, the ID of the group (currently not supported).
+            - name: initiate
+              type: boolean
+              description: If true, the dialogue is opened and the robot initiates the conversation.
+            - name: initial_input
+              type: string
+              description: Optionally specify the utterance the chatbot initiates the conversation with. Otherwise, the chatbot may generate one based on the role. It is ignored if initiate is false.
+        
+          out:
+            - name: role_result
+              type: string
+              description: A machine-readable serialized JSON object containing the result, depending on the role.
     </skill>
 
-    <skill content-type="json">
-      {
-        "id": "say",
-        "description": "Say something with multiple social modality, mainly speech utterance, but also gaze, gestures, etc.",
-        "interface": "action",
-        "default_interface_path": "/skill/say",
-        "datatype": "communication_skills/action/Say",
-        "parameters": [
-          {
-            "name": "person_id",
-            "type": "string",
-            "description": "The ID of the person to interact with. If empty, any user can be interacted with."
-          },
-          {
-            "name": "group_id",
-            "type": "string",
-            "description": "The ID of the group of persons to interact with. If empty, any group of persons can be interacted with. If not empty, the 'person_id' field should be ignored."
-          },
-          {
-            "name": "input",
-            "type": "string",
-            "description": "The text to be uttered. It might contains additional markup for multi-modal communication."
-          }
-        ],
-        "functional_domains": ["communication"]
-      }
+    <skill content-type="yaml">
+        id: say
+        description: 'Speak out the provided input text (also executing any 
+          additional markup action).
+
+          See :ref:`tts` for details.'
+        interface: action
+        default_interface_path: /skill/say
+        datatype: communication_skills/action/Say
+        functional_domains:
+          - communication
+        parameters:
+          in:
+            - name: meta.priority
+              type: integer
+              description: Higher value means higher priority.
+            - name: person_id
+              type: string
+              description: If targeting a specific person, the ID of the person.
+            - name: group_id
+              type: string
+              description: If targeting a group of people, the ID of the group (currently not supported).
+            - name: input
+              type: string
+              description: The `multi-modal expression &lt;tts-markup&gt;`_ to be performed.
     </skill>
   </export>
 </package>
