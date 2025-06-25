@@ -2,6 +2,12 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* rewrite manifests in YAML with more detailled documentation
+* doc
+* Contributors: Séverin Lemaignan
+
 1.2.0 (2025-06-18)
 ------------------
 * {skillint -> archlint}
