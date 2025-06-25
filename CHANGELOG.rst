@@ -2,8 +2,8 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.3.0 (2025-06-25)
+------------------
 * rewrite manifests in YAML with more detailled documentation
 * doc
 * Contributors: Séverin Lemaignan
