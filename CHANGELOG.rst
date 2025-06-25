@@ -2,8 +2,8 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Forthcoming
------------
+1.3.2 (2025-06-25)
+------------------
 * refine skills parameters documentation
 * Contributors: Séverin Lemaignan
 
