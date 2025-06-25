@@ -30,10 +30,11 @@
 
     <skill content-type="yaml">
         id: ask
-        description: 'A specialization of the :action:`chat` where the role 
+        description: |
+          A specialization of the :skill:`chat` where the role 
           is predefined and the dialogue is always initiated by the robot.
-           
-           See :ref:`dialogue_management` for details.'
+          
+          See :ref:`dialogue_management` for details.
         interface: action
         default_interface_path: /skill/ask
         datatype: communication_skills/action/Ask
@@ -46,13 +47,15 @@
               description: Higher value means higher priority.
             - name: person_id
               type: string
+              default: ""
               description: If targeting a specific person, the ID of the person.
             - name: group_id
               type: string
               description: If targeting a group of people, the ID of the group (currently not supported).
             - name: answers_schema
               type: object
-              description: 'The serialized JSON object of pieces of information 
+              description: |
+                The serialized JSON object of pieces of information 
                 to be retrieved through the chat. The keys correspond to the info 
                 required, while the values follow the `JSON schema format for object 
                 properties &lt;https://json-schema.org/understanding-json-schema/reference/object.html#properties&gt;`_.
@@ -62,30 +65,34 @@
                 
                 .. code:: json
                 
-                   {"age": {"type": "integer", "minimum": 0}}'
+                   {"age": {"type": "integer", "minimum": 0}}
             - name: question
               type: string
-              description: 'The question to be asked to the user. It is used to 
-                generate the initial utterance of the dialogue.'
+              required: true
+              description: |
+                The question to be asked to the user. It is used to 
+                generate the initial utterance of the dialogue.
         
           out:
             - name: answers
               type: object
-              description: 'The serialized JSON object containing the pieces 
+              description: |
+                The serialized JSON object containing the pieces 
                 retrieved from the chat, depending on the answers_schema.
                 
                 For the one in the example above, the result might be:
                 
                 .. code:: json
                 
-                   {"age": 42}'
+                   {"age": 42}
     </skill>
 
     <skill content-type="yaml">
         id: chat
-        description: 'Start a dialogue with a defined purpose.
+        description: |
+           Start a dialogue with a defined purpose.
            
-           See :ref:`dialogue_management` for details.'
+           See :ref:`dialogue_management` for details.
         interface: action
         default_interface_path: /skill/chat
         datatype: communication_skills/action/Chat
@@ -112,7 +119,10 @@
               description: If true, the dialogue is opened and the robot initiates the conversation.
             - name: initial_input
               type: string
-              description: Optionally specify the utterance the chatbot initiates the conversation with. Otherwise, the chatbot may generate one based on the role. It is ignored if initiate is false.
+              description: |
+                Optionally specify the utterance the chatbot initiates the conversation with. 
+                Otherwise, the chatbot may generate one based on the role. It is ignored if 
+                ``initiate`` is false.
         
           out:
             - name: role_result
@@ -122,10 +132,11 @@
 
     <skill content-type="yaml">
         id: say
-        description: 'Speak out the provided input text (also executing any 
+        description: |
+          Speak out the provided input text (also executing any 
           additional markup action).
 
-          See :ref:`tts` for details.'
+          See :ref:`tts` for details.
         interface: action
         default_interface_path: /skill/say
         datatype: communication_skills/action/Say
@@ -144,7 +155,9 @@
               description: If targeting a group of people, the ID of the group (currently not supported).
             - name: input
               type: string
-              description: The `multi-modal expression &lt;tts-markup&gt;`_ to be performed.
+              required: true
+              description: |
+                The :ref:`multi-modal expression &lt;tts-markup&gt;` to be performed.
     </skill>
   </export>
 </package>
