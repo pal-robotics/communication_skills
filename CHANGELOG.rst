@@ -2,6 +2,11 @@
 Changelog for package communication_skills
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+Forthcoming
+-----------
+* refine skills parameters documentation
+* Contributors: Séverin Lemaignan
+
 1.3.1 (2025-06-25)
 ------------------
 * adjust the YAML descriptions to ensure correct rendering of the documentation
