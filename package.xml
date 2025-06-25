@@ -42,18 +42,15 @@
           - communication
         parameters:
           in:
-            - name: meta.priority
-              type: integer
-              description: Higher value means higher priority.
-            - name: person_id
+            - name: question
               type: string
-              default: ""
-              description: If targeting a specific person, the ID of the person.
-            - name: group_id
-              type: string
-              description: If targeting a group of people, the ID of the group (currently not supported).
+              required: true
+              description: |
+                The question to be asked to the user. It is used to 
+                generate the initial utterance of the dialogue.
             - name: answers_schema
-              type: object
+              type: string
+              required: true
               description: |
                 The serialized JSON object of pieces of information 
                 to be retrieved through the chat. The keys correspond to the info 
@@ -66,13 +63,24 @@
                 .. code:: json
                 
                    {"age": {"type": "integer", "minimum": 0}}
-            - name: question
+
+                For a simple yes/no question, you could have instead:
+                
+                .. code:: json
+                
+                   {"response": {"type": "boolean"}}
+            - name: person_id
               type: string
-              required: true
-              description: |
-                The question to be asked to the user. It is used to 
-                generate the initial utterance of the dialogue.
-        
+              default: ""
+              description: If targeting a specific person, the ID of the person.
+            - name: group_id
+              type: string
+              default: ""
+              description: If targeting a group of people, the ID of the group *(currently not supported)*.
+            - name: meta.priority
+              type: integer
+              default: 128
+              description: Between 0 and 255. Higher value means that this skill invokation will have higher priority.
           out:
             - name: answers
               type: object
@@ -80,7 +88,7 @@
                 The serialized JSON object containing the pieces 
                 retrieved from the chat, depending on the answers_schema.
                 
-                For the one in the example above, the result might be:
+                For *age* example above, the result might be:
                 
                 .. code:: json
                 
@@ -105,25 +113,29 @@
               description: The name and configuration for the dialogue purpose (chatbot-dependent).
               required: true
               default: __default__
-            - name: meta.priority
-              type: integer
-              description: Higher value means higher priority.
-            - name: person_id
-              type: string
-              description: If targeting a specific person, the ID of the person.
-            - name: group_id
-              type: string
-              description: If targeting a group of people, the ID of the group (currently not supported).
             - name: initiate
               type: boolean
+              default: false
               description: If true, the dialogue is opened and the robot initiates the conversation.
             - name: initial_input
               type: string
+              default: ""
               description: |
                 Optionally specify the utterance the chatbot initiates the conversation with. 
                 Otherwise, the chatbot may generate one based on the role. It is ignored if 
                 ``initiate`` is false.
-        
+            - name: person_id
+              type: string
+              default: ""
+              description: If targeting a specific person, the ID of the person.
+            - name: group_id
+              type: string
+              default: ""
+              description: If targeting a group of people, the ID of the group *(currently not supported)*.
+            - name: meta.priority
+              type: integer
+              default: 128
+              description: Between 0 and 255. Higher value means that this skill invokation will have higher priority.
           out:
             - name: role_result
               type: string
@@ -144,20 +156,23 @@
           - communication
         parameters:
           in:
-            - name: meta.priority
-              type: integer
-              description: Higher value means higher priority.
-            - name: person_id
-              type: string
-              description: If targeting a specific person, the ID of the person.
-            - name: group_id
-              type: string
-              description: If targeting a group of people, the ID of the group (currently not supported).
             - name: input
               type: string
               required: true
               description: |
-                The :ref:`multi-modal expression &lt;tts-markup&gt;` to be performed.
+                The :ref:`multi-modal expression &lt;tts-markup&gt;` to be read-out.
+            - name: person_id
+              type: string
+              default: ""
+              description: If targeting a specific person, the ID of the person.
+            - name: group_id
+              type: string
+              default: ""
+              description: If targeting a group of people, the ID of the group *(currently not supported)*.
+            - name: meta.priority
+              type: integer
+              default: 128
+              description: Between 0 and 255. Higher value means that this skill invokation will have higher priority.
     </skill>
   </export>
 </package>
